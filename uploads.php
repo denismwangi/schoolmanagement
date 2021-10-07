@@ -10,8 +10,13 @@ if (!isset($_SESSION['user'])||$_SESSION['role']!='teacher') {
 <?php
 
 
-//include_once 'database.php';
 
+if (isset($_GET['delete'])) {
+
+  $sql = "DELETE FROM uploads WHERE id='".$_GET['delete']."'";
+  $conn->query($sql);
+   # code...
+ } 
 ?>
 
 
@@ -230,7 +235,7 @@ x.style.display='block';</script>";
                      
 
                       echo "<tr><td> " . $row["id"]. " </td><td> " . $row["description"]." </td><td> " . $row["name"]." </td>
-                      <td><a href='upload.php?delete=". $row["id"]."'><small class='label  bg-red'>Delete</small></a>
+                      <td><a href='uploads.php?delete=". $row["id"]."'><small class='label  bg-red'>Delete</small></a>
                       </td></tr>";
                        }
                                   }

@@ -2,7 +2,7 @@
 
 
 include_once 'database.php';
-if (!isset($_SESSION['user'])||$_SESSION['role']!='finance') {
+if (!isset($_SESSION['user'])||$_SESSION['role']!='teacher') {
   # code...
   header('Location:./logout.php');
 }
@@ -101,133 +101,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<!--Update************************************************************************************************************* -->            
-     <div class="col-xs-4">
-
-   
-
-         <div class="alert alert-success alert-dismissible" style="display: none;" id="truemsg">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4><i class="icon fa fa-check"></i> Success!</h4>
-                Update  Successfully 
-              </div>
-<!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Update Fees</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" method="POST" >
-              <div class="box-body">
-
-
-              
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Pay</label>
-                  <input name="pay" type="text" class="form-control" id="exampleInputPassword1"  required >
-                </div>
-
-     
- </div>
-              <!-- /.box-body -->
-
-              <div class="box-footer">
-                <button type="submit" name="submit" value="submit" class="btn btn-primary">Update Fees</button>
-              </div>
-            </form>
-
-              <?php
-
-              if (isset($_POST['submit'])) {
-                //$feeid = $_POST['feeid'];
-                $pay = $_POST['pay'];
-
-
-                  $sqlbal = "SELECT * FROM fees";
-                  $result1 = $conn->query($sqlbal);
-
-                  if ($result1->num_rows > 0) {
-                   // output data of each row
-                     while($row = $result1->fetch_assoc()) {
-                  
-                      $fid = $row["feeid"];
-                      $total_billed = $row["total_billed"];
-                      $total_paid = $row["total_paid"];
-                      $total_balance = $row["total_balance"];
-                       }
-                     }
-          
-                   // echo $total_balance;
-                   // echo $pay;
-
-                $res =  $total_balance - $pay;
-
-               
-                  try {
-   // echo $fid;
-   //  echo $res;
-
-                    // $sql22 = "UPDATE fees set total_balance='".$res."' where feeid='".$fid."'";
-$edit2 =mysqli_query($conn,"UPDATE fees SET total_balance='$res' WHERE feeid='$fid' ")or die (mysqli_error());
-
-
-                
-                   
-
-
-                  $sqlbal = "SELECT * FROM fees";
-                  $result2 = $conn->query($sqlbal);
-
-                  if ($result2->num_rows > 0) {
-                   // output data of each row
-                     while($row = $result2->fetch_assoc()) {
-                  
-                      $total_billed = $row["total_billed"];
-                      $total_paid = $row["total_paid"];
-                      $total_balance = $row["total_balance"];
-                       }
-                    }
-
-                 
-
-                  $resultpaid = $total_billed -  $total_balance;
-                  
-
-                   // $sql22 = "UPDATE fees set total_paid='".$resultpaid."' where feeid='".$sid."'";
-
-                  $edit3 =mysqli_query($conn,"UPDATE fees SET total_paid='$resultpaid' WHERE feeid='$fid' ")or die (mysqli_error());
-
-
-// echo $resultpaid;
-//                   echo $total_balance;
-//                   echo $total_billed;
-
-                  if ($conn->query($edit3) === TRUE) {
-                         echo "<script type='text/javascript'> var x = document.getElementById('truemsg');
-x.style.display='block';</script>";
-                      } else {
-                            }
-                    
-                  } catch (Exception $e) {
-                    
-                  }
-
-
-
-
-
-                  
-                # code...
-                                            }
-
-              ?></div></div>
-
           
           <?php // } ?>
 
-          <div class="col-xs-8">
+          <div class="col-xs-12">
 
 
           <div class="box box-primary">
@@ -323,7 +200,7 @@ x.style.display='block';</script>";
                    // output data of each row
                      while($row = $result6->fetch_assoc()) {
                       $fid = $row["feeid"];
-                      echo "<td><a href='test.php?update=". $row["feeid"]."'><small class='label  bg-orange'>Update</small></a></td>";
+                      echo "<td><a href='update_fees.php?update=". $row["feeid"]."'><small class='label  bg-orange'>Update</small></a></td>";
                        }
                                   }
 

@@ -2,7 +2,7 @@
 
 
 include_once 'database.php';
-if (!isset($_SESSION['user'])||$_SESSION['role']!='finance') {
+if (!isset($_SESSION['user'])||$_SESSION['role']!='teacher') {
   # code...
   header('Location:./logout.php');
 }

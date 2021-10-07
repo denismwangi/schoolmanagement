@@ -24,6 +24,7 @@
         <li id="teacher"><a href="./teacher.php"><i class="fa  fa-black-tie"></i> <span>Teacher</span> </a></li>
          <li id="parent"><a href="./accountant.php"><i class="fa  fa-male"></i> <span>Accountant</span> </a></li>
         <li id="parent"><a href="./parent.php"><i class="fa  fa-female"></i> <span>Parents</span> </a></li>
+        <li id="finance"><a href="./finance.php"><span><i class="fa fa-credit-card-alt" aria-hidden="true"></i> <span>Fees</span> </a></li>
 
         <li id="subject"><a href="./subject.php"><i class="fa fa-book"></i> <span>Courses</span> </a></li>
         <li id="class"><a href="./class.php"><i class="fa fa-bank"></i> <span>Class Room</span> </a></li>

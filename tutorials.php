@@ -55,6 +55,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
  <?php include_once 'header.php'; ?>
   <!-- Left side column. contains the logo and sidebar -->
   <?php include_once 'sidebar.php'; ?>
+  <?php
+
+
+
+if (isset($_GET['delete'])) {
+
+  $sql = "DELETE FROM videos WHERE id='".$_GET['delete']."'";
+  $conn->query($sql);
+   # code...
+ } 
+?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -131,7 +142,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
              if (isset($_POST['submit'])) { // if save button on the form is clicked
                         // name of the uploaded file
-                        $maxsize = 52428800000000; // 5MB
+                        $maxsize = 10000000000000000000; // 
                        if(isset($_FILES['video']['name']) && $_FILES['video']['name'] != ''){
                            $name = $_FILES['video']['name'];
                            $description = $_POST['description'];
